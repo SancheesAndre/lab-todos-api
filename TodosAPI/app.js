@@ -1,14 +1,17 @@
 import connectDB from './config/db.config.js'
 import express from 'express'
 import Task from './models/Todo.js'
+import cors from 'cors'
+import dotenv from 'dotenv'
 
-const PORT = 3001
+const EXPRESS_PORT = process.env.EXPRESS_PORT || 3001
 
 connectDB()
 
 const app = express()
 
 app.use(express.json())
+app.use(cors())
 
 app.get('/', (req, res) => {
     res.send('Welcome')
@@ -17,7 +20,7 @@ app.get('/', (req, res) => {
 app.get('/todos', async (req, res) => {
     try {
         const tasks = await Task.find({})
-        res.status(200).json(tasks)
+        return res.status(200).json(tasks)
     } catch (error) {
         console.log(error)
         res.status(500).json({ message: 'Server Status error' })
@@ -27,7 +30,7 @@ app.get('/todos', async (req, res) => {
 app.post('/todos', async (req, res) => {
     try {
         const newTask = await Task.create(req.body)
-        res.status(201).json(newTask)
+        return res.status(201).json(newTask)
     } catch (error) {
         console.log(error)
         res.status(500).json({ message: 'Error while creating tasks' })
@@ -59,4 +62,4 @@ app.delete('/todos/:id', async (req, res) => {
     }
 })
 
-app.listen(PORT, () => console.log('Server listening on port: ', PORT))
+app.listen(EXPRESS_PORT, () => console.log('Server listening on port: ', EXPRESS_PORT))

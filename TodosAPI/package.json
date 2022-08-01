@@ -2,7 +2,6 @@
   "name": "lab-todos-api",
   "version": "1.0.0",
   "main": "app.js",
-  "devDependencies": {},
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -13,6 +12,8 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.1",
     "express": "^4.18.1",
     "mongoose": "^6.4.6"
   }

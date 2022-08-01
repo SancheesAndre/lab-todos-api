@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+import mongoose from 'mongoose'
 
 const { Schema, model } = mongoose
 
@@ -11,6 +11,7 @@ const taskSchema = new Schema({
 
     completed: {
         type: Boolean,
+        default: false,
         required: true,
     }   
 },

@@ -1,6 +1,7 @@
 import mongoose from 'mongoose';
+import dotenv from 'dotenv/config';
 
-const MONGO_URI = 'mongodb://localhost/todosapi'
+const MONGO_URI = process.env.MONGO_URI
 
 const connectDB = async () => {
     const connection = await mongoose.connect(MONGO_URI)

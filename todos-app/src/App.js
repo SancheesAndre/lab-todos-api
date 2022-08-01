@@ -1,7 +1,10 @@
+import TodoForm from './components/TodoForm'
+import TodoList from './components/TodoList'
 import React from 'react';
 import axios from 'axios'
 import { useState, useEffect } from 'react';
 import './App.css';
+import { FaWindowClose } from 'react-icons/fa';
 
 function App() {
   const [tasks, setTasks] = useState([])
@@ -15,23 +18,37 @@ function App() {
       .catch(error => console.log(error))
   }, [])
 
+  const clickar = () => {
+    console.log('cliquei')
+  }
+
   return (
     <div className="App">
-      <div>
-        <header className="Header">
-          <h1>Todos API</h1>
+      <Container >
+        <div>
+          <header className="Header">
+            <h1>Todo's API</h1>
+          </header>
+        </div>
+        <TodoForm />
+        <TodoList />
+        <div className="content">
           {
             tasks.map(task => {
+              console.log(task.title)
               return (
                 <div key={task._id} className="container">
-                  <h1>{task}</h1>
+                  <input type="checkbox" onChange={() => { clickar() }} />
+                  <h1>{task.title}</h1>
+                  <h1 className="closeBtnContainer">
+                    <p className='closeBtn'><FaWindowClose onClick={clickar} /></p>
+                  </h1>
                 </div>
               )
             })
           }
-        </header>
-      </div>
-
+        </div>
+      </Container>
     </div>
   );
 }
