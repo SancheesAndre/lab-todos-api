@@ -1,0 +1,17 @@
+.task {
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+    padding: 5px;
+    margin: 6px auto;
+    background-color: rgb(200, 200, 240);
+    border-radius: 4px;
+}
+
+.task input {
+    cursor: pointer;
+}
+
+.closeBtn {
+    cursor: pointer;
+}
